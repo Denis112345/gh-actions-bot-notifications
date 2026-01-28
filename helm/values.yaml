@@ -1,0 +1,10 @@
+image:
+  repo: localhost:30080/gh-actions-bot-notifications
+  tag: latest
+
+name: gh-actions-bot-notifications
+
+service:
+  port: 5000
+  targetPort: 5000 # Порт из твоего JSON
+  nodePort: 30012 
