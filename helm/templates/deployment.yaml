@@ -10,4 +10,4 @@ spec:
         - name: bot
           image: "{{ .Values.image.repo }}:{{ .Values.image.tag }}"
           ports:
-            - containerPort: {{ .Values.botConfig.port }}
+            - containerPort: {{ .Values.service.port }}
