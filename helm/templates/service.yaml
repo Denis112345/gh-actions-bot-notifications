@@ -20,7 +20,7 @@ spec:
   ports:
     - port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.targetPort }}
-      NodePort: {{ .Values.service.nodePort }}
+      nodePort: {{ .Values.service.nodePort }}
       protocol: TCP
       name: node-port
   selector:

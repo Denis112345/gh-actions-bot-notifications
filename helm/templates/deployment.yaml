@@ -7,7 +7,7 @@ spec:
   template:
     spec:
       containers:
-        - name: bot
+        - name: {{ .Values.name }}
           image: "{{ .Values.image.repo }}:{{ .Values.image.tag }}"
           ports:
             - containerPort: {{ .Values.service.port }}
