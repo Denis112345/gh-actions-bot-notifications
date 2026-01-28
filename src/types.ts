@@ -10,5 +10,5 @@ export interface DeployPayload {
     status: Status,
     env: ServiceEnv,
     time: string,
-    commit_url: string,
+    actionUrl: string,
 }

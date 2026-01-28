@@ -8,14 +8,14 @@ const app = express()
 app.use(express.json())
 
 app.post('/notify', async (req: Request<{}, {}, DeployPayload>, res: Response) => {
-    const { service, status, env, branch, time, commit_url } = req.body
+    const { service, status, env, branch, time, actionUrl } = req.body
 
     if (!config.serviceNames.includes(service)) {
         return res.status(400).json({ error: 'Unknkow service' })
     }
 
 // Формируем строку с ссылкой, если она пришла
-    const commitLink = commit_url ? `<a href="${commit_url}">Последний коммит 🔗</a>` : 'Нет ссылки';
+    const actionLink = actionUrl ? `<a href="${actionUrl}">Последний Action</a> 🔗` : 'Нет ссылки';
 
     const message = `
 📦 <b>${service.toUpperCase()}</b>
@@ -24,7 +24,7 @@ app.post('/notify', async (req: Request<{}, {}, DeployPayload>, res: Response) =
 🌿 <b>Ветка:</b> <code>${branch}</code>
 🏗️ <b>Окружение:</b> <code>${env}</code>
 🕒 <b>Время:</b> ${time}
-🔗 <b>Ссылка:</b> ${commitLink}
+🔗 <b>Ссылка:</b> ${actionLink}
   `;
 
   try {
