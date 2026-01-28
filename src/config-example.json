@@ -1,3 +1,7 @@
 {
-    "service_names": ["example"]
+    "serviceNames": [""],
+    "botToken": "",
+    "chatID": "",
+    "topicID": "",
+    "port": 5000
 }

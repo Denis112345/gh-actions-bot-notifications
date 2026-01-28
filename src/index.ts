@@ -24,7 +24,7 @@ app.post('/notify', async (req: Request<{}, {}, DeployPayload>, res: Response) =
   `;
 
   try {
-    await bot.telegram.sendMessage(config.chatID, message, { parse_mode: 'HTML' });
+    await bot.telegram.sendMessage(config.chatID, message, { parse_mode: 'HTML', message_thread_id: config.topicID });
     res.status(200).send('OK')
   } catch (error) {
     console.error('Ошибка отправки:', error);
