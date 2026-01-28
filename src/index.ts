@@ -8,19 +8,23 @@ const app = express()
 app.use(express.json())
 
 app.post('/notify', async (req: Request<{}, {}, DeployPayload>, res: Response) => {
-    const { service, status, env, branch, time } = req.body
+    const { service, status, env, branch, time, commit_url } = req.body
 
     if (!config.serviceNames.includes(service)) {
         return res.status(400).json({ error: 'Unknkow service' })
     }
 
-    const message  = `
+// Формируем строку с ссылкой, если она пришла
+    const commitLink = commit_url ? `<a href="${commit_url}">Последний коммит 🔗</a>` : 'Нет ссылки';
+
+    const message = `
 📦 <b>${service.toUpperCase()}</b>
 ━━━━━━━━━━━━━━━━━━
-✅ <b>Статус:</b> ${status}
+📊 <b>Статус:</b> ${status}
 🌿 <b>Ветка:</b> <code>${branch}</code>
 🏗️ <b>Окружение:</b> <code>${env}</code>
 🕒 <b>Время:</b> ${time}
+🔗 <b>Ссылка:</b> ${commitLink}
   `;
 
   try {
