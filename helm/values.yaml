@@ -1,5 +1,5 @@
 image:
-  repo: localhost:30080/gh-actions-bot-notifications
+  repo: localhost:30080/library/gh-actions-bot-notifications
   tag: latest
 
 name: gh-actions-bot-notifications
